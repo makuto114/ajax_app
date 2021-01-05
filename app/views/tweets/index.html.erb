@@ -1,12 +1,16 @@
 <h1>Ajax_app</h1>
-<%= link_to url: "/tweets", method: :post, id: "form" do |form| %>
+<%= form_with url: "/tweets", method: :post, id: "form" do |form| %>
   <%= form.text_field :content %>
   <%= form.submit '投稿する', id: "submit" %>
 <% end %>
 
 <% @tweets.each do |tweet| %>
-  <div>
-    <%= tweet.text %>
-    <%= tweet.created_at %>
-  </div>  
+  <div class="post" data-id=<%= tweet.id %> data-check=<%= tweet.checked %>>
+    <div class="post-date">
+      投稿日時：<%= tweet.created_at %>
+    </div>
+    <div class="post-content">
+      <%= tweet.content %>
+    </div>
+  </div>
 <% end %>
