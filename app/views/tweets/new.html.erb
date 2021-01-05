@@ -1,0 +1,6 @@
+<h1>新規投稿画面</h1>
+
+<%= form_with url: tweets_path, method: :post, local: true do |form| %>
+  <%= form.text_field :text %>
+  <%= form.submit '投稿' %>
+<% end %>

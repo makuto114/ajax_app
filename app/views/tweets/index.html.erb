@@ -1,0 +1,10 @@
+<h1>Welcome First App!</h1>
+
+<%= link_to "投稿ページ", "tweets/new" %>
+
+<% @tweets.each do |tweet| %>
+  <div>
+    <%= tweet.text %>
+    <%= tweet.created_at %>
+  </div>  
+<% end %>
