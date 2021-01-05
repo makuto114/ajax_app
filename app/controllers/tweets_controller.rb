@@ -8,4 +8,16 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(text: params[:content])
     redirect_to action: :index
   end
+
+  def checked
+    tweet = Tweet.find(params[:id])
+    if tweet.checked
+      tweet.update(checked: false)
+    else
+      tweet.update(checked: true)
+    end
+
+    item = Tweet.find(params[:id])
+    render json { tweet: item }
+  end
 end
