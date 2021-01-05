@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.create(text: params[:content])
+    @tweet = Tweet.create(content: params[:content])
     redirect_to action: :index
   end
 
@@ -18,6 +18,6 @@ class TweetsController < ApplicationController
     end
 
     item = Tweet.find(params[:id])
-    render json { tweet: item }
+    render json: { tweet: item }
   end
 end
