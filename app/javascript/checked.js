@@ -1,14 +1,15 @@
 function check() {
-  const tweets = document.querySelectorAll('.post');
+  const tweets = document.querySelectorAll('.tweet');
   tweets.forEach(function (tweet) {
     if (tweet.getAttribute("data-load") != null) {
       return null;
     }
     tweet.setAttribute("data-load", "true");
+    
     tweet.addEventListener("click", () => {
-      const tweetId = post.getAttribute("data-id");
+      const tweetId = tweet.getAttribute("data-id");
       const XHR = new XMLHttpRequest();
-      XHR.open("GET", `/tweets/${tweetId}`, true)
+      XHR.open("GET", `/tweets/${tweetId}`, true);
       XHR.responseType = "json";
       XHR.send();
       XHR.onload = () => {
@@ -16,11 +17,11 @@ function check() {
           alert(`Error ${XHR.status}: ${XHR.statusText}`);
           return null;          
         }
-        const item = XHR.response.post;
+        const item = XHR.response.tweet;
         if (item.checked === true) {
-          post.setAttribute("data-check", "true");
+          tweet.setAttribute("data-check", "true");
         } else if (item.checked === false) {
-          post.removeAttribute("data-check");
+          tweet.removeAttribute("data-check");
         }
       };
     });

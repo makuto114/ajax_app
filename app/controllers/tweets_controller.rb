@@ -5,8 +5,8 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.create(content: params[:content])
-    redirect_to action: :index
+    @tweet = Tweet.create(content: params[:content], checked: false)
+    render json:{ tweet: tweet}
   end
 
   def checked

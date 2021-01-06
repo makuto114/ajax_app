@@ -1,15 +1,18 @@
 <h1>Ajax_app</h1>
 <%= form_with url: "/tweets", method: :post, id: "form" do |form| %>
-  <%= form.text_field :content %>
+  <%= form.text_field :content, id: 'content' %>
   <%= form.submit '投稿する', id: "submit" %>
 <% end %>
 
+<div id="list">
+</div>
+
 <% @tweets.each do |tweet| %>
-  <div class="post" data-id=<%= tweet.id %> data-check=<%= tweet.checked %>>
-    <div class="post-date">
+  <div class="tweet" data-id=<%= tweet.id %> data-check=<%= tweet.checked %>>
+    <div class="tweet-date">
       投稿日時：<%= tweet.created_at %>
     </div>
-    <div class="post-content">
+    <div class="tweet-content">
       <%= tweet.content %>
     </div>
   </div>
