@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.create(content: params[:content], checked: false)
+    tweet = Tweet.create(content: params[:content], checked: false)
     render json:{ tweet: tweet}
   end
 
